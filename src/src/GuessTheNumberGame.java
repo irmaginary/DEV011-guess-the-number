@@ -2,17 +2,19 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessTheNumberGame {
+    //Inicia el juego y genera el número aleatorio.
     public static void main(String[] args) {
-        //HumanPlayer
-       // HumanPlayer humanPlayer = new HumanPlayer();
-        //humanPlayer.setPlayerName(); //obtener nombre
-
         //generar número random, intervalo de números, número de intentos y respuesta del player
         Random rand = new Random();
         int targetNumber = rand.nextInt(100);
-        int numberOfTries = 0;
+        int numberOfTries = 0; //coleccionarlos en un array
 
         Scanner inputNumberHumanPlayer = new Scanner(System.in);
+
+
+        //HumanPlayer
+        // HumanPlayer humanPlayer = new HumanPlayer();
+        //humanPlayer.setPlayerName(); //obtener nombre
 
         //obtener suposición del jugador
         int guess; //= humanPlayer.makeGuess();
@@ -36,6 +38,7 @@ public class GuessTheNumberGame {
             }
         }
         System.out.println("You win!");
+        System.out.println("Your guesses: ");
         System.out.println("Attempts: " + numberOfTries );
     }
 }
