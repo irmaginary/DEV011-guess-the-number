@@ -4,58 +4,45 @@ import java.util.Scanner;
 public class GuessTheNumberGame {
     //Inicia el juego y genera el número aleatorio.
     public static void main(String[] args) {
-        //generar número random, intervalo de números, número de intentos y respuesta del player
         Random rand = new Random();
         int targetNumber = rand.nextInt(100);
-        int numberOfTries = 0; //coleccionarlos en un array
+        System.out.println(targetNumber); //ver número random
 
-        Scanner inputNumberHumanPlayer = new Scanner(System.in);
-
-
-        //HumanPlayer
-        // HumanPlayer humanPlayer = new HumanPlayer();
-        //humanPlayer.setPlayerName(); //obtener nombre
-
-        //obtener suposición del jugador
-        int guess; //= humanPlayer.makeGuess();
-        boolean win = false;
-
-        while (win == false) {
-
-            System.out.println(targetNumber); //ver número random
-            System.out.println("Guess a number between 1 and 100: ");
-            guess = inputNumberHumanPlayer.nextInt();
-            numberOfTries++;
-
-            if (guess == targetNumber) {
-                win = true;
-            }
-            else if (guess < targetNumber) {
-                System.out.println("To low!");
-            }
-            else if (guess > targetNumber) {
-                System.out.println("To high!");
-            }
-        }
-        System.out.println("You win!");
-        System.out.println("Your guesses: ");
-        System.out.println("Attempts: " + numberOfTries );
     }
 }
-/*public class GuessTheNumberGame {
-  private Random random$;
-  private int targetNumber$;
 
-  //constructor
-    public GuessTheNumberGame() {
-       random$ = new Random();
-       targetNumber$ = random$.nextInt(100) + 1;
+    /*
+    //método checkNumber() para ejecutar turnos, guestGuess y el estado de la partida
+    //tiene que ser booleano
+    public static boolean checkGuess() {
 
+        return ;
     }
 
-    //Método
-    public boolean checkGuess(Player player) {
-        int guess = player.getGuess(); //traer el método getguess del objeto player
-        return guess == targetNumber$;
+    Scanner inputNumberHumanPlayer = new Scanner(System.in); //el scanner ya está presente en la clase Player. Solo hay que invocarlo.
+        int numberOfTries = 0; //coleccionarlos en un array
+
+            int guess;
+
+            boolean win = false;
+
+            while (win == false) {
+
+                System.out.println("Guess a number between 1 and 100: ");
+                guess = inputNumberHumanPlayer.nextInt();
+                numberOfTries++;
+
+                if (guess == targetNumber) {
+                    win = true;
+                } else if (guess < targetNumber) {
+                    System.out.println("To low!");
+                } else if (guess > targetNumber) {
+                    System.out.println("To high!");
+                }
+            }
+            System.out.println("You win!");
+            System.out.println("Your guesses: ");
+            System.out.println("Attempts: " + numberOfTries);
+        }
     }
-}*/
+*/

@@ -10,12 +10,11 @@ public abstract class Player {
     getName(): string;
     getGuesses(): Array<int>;
 }*/
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 import java.util.List;
 
 //esta clase no se instanci, se hereda a HumanPlayer y ComputerPlayer
 public abstract class Player {
-
     // Atributos
     private String name;
     private List<Integer> guesses;
@@ -35,13 +34,11 @@ public abstract class Player {
     }
 
     // Método para obtener el historial de suposiciones
-    public List<Integer> getGuesses() {
+    public List<Integer> getGuesses(int guess) {
         return guesses;
     }
 
-    // Método para añadir una suposición al historial
-    protected void addGuess(int guess) {
-        guesses.add(guess);
-    }
 
+}*/
+public class Player {
 }
