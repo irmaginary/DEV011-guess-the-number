@@ -12,7 +12,8 @@ public class HumanPlayer extends Player {
     // Implementación del método abstracto makeGuess
     @Override
     public int makeGuess() {
-        System.out.println("Make your guess: ");
+        System.out.println("––– Round: " + getName() + "–––");
+        System.out.println(getName() + ", make your guess: ");
         return scanner.nextInt();
     }
 
