@@ -40,5 +40,22 @@ public abstract class Player {
 
 
 }*/
-public class Player {
+import java.util.Scanner;
+public abstract class Player {
+    String name;
+    int guesses;
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getGuesses() {
+        return guesses;
+    }
+    public void setGuesses(int guesses) {
+        this.guesses = guesses;
+    }
+    public abstract int makeGuess();
 }
