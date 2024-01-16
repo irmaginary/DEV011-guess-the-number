@@ -9,33 +9,42 @@ public class GuessTheNumberGame {
         int targetNumber = rand.nextInt(100);
         System.out.println(targetNumber); //ver número random
 
-        //Insertar objetos
+        //Insertar objetos de jugadores
         HumanPlayer player = new HumanPlayer();
-        //ComputerPlayer computerPlayer = new ComputerPlayer();
-       // playerGuessRange(targetNumber, player.getNumber());
-        //playerGuessRange(targetNumber,computerPlayer.getNumber());
+        ComputerPlayer computerPlayer = new ComputerPlayer();
+
         boolean win = false;
 
 
-        //Para terminar el juego
-        while (win == false) {
+        //Bucle para turnos
+        do {
+            //HumanPlayer
             int playerGuess = player.makeGuess();
 
             if (playerGuess == targetNumber) {
                 win = true;
+                System.out.println("You win!");
+                break;
             } else if (playerGuess < targetNumber) {
                 System.out.println("To low!");
             } else if (playerGuess > targetNumber) {
                 System.out.println("To high!");
             }
-        }
-        System.out.println("You win!");
-        //System.out.println("Your guesses: ");
 
+        //Para ComputerPlayer
+            int computerGuess = computerPlayer.makeGuess();
+
+            if (computerGuess == targetNumber) {
+                win = true;
+                System.out.println("Computer Player wins!");
+            } else if (computerGuess < targetNumber) {
+                System.out.println("To low!");
+            } else {
+                System.out.println("To high!");
+            }
+        }while (!win);
     }
-
-
-    }
+}
 
     //comparación con checkGuess()
 
