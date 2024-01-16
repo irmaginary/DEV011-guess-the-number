@@ -1,37 +1,27 @@
-//import java.util.Scanner;
+import java.util.Scanner;
 
-/*public class HumanPlayer extends Player {
+public class HumanPlayer extends Player {
+    private Scanner scanner = new Scanner(System.in);
 
-    // Constructor que llama al constructor de la clase base (Player)
+    // Constructor de HumanPlayer
     public HumanPlayer() {
-        super("");
-        setPlayerName();
-    }
-
-    public void setPlayerName() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Your name: ");
-        String playerName = scanner.nextLine();
-        getName(playerName);
+        enterName();
+        System.out.println("––– Round: " + getName() + "–––");
     }
 
     // Implementación del método abstracto makeGuess
     @Override
-    public int makeGuess(Player player) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("--- Round 1: " + player.getName() + "---");
-        //int guess = input.nextInt();
-        System.out.println("Guess a number between 1 and 100: ");
-        int playerGuess = scanner.nextInt();
-        player.getGuesses(playerGuess);
-        return playerGuess;
+    public int makeGuess() {
+        System.out.println("Make your guess: ");
+        return scanner.nextInt();
+    }
 
-        // Agregar la suposición al historial (¿Es necesario?)
-       // getGuesses(guess);
-        //return guess;
+    // Método adicional para obtener el nombre del jugador
+    public void enterName() {
+        System.out.println("Enter your name: ");
+        String playerName = scanner.nextLine();
+        setName(playerName);
     }
 }
-*/
-public class HumanPlayer extends Player {
-}
+
 

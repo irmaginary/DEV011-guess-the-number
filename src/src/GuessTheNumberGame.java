@@ -1,15 +1,44 @@
+//import java.util.Scanner;
 import java.util.Random;
-import java.util.Scanner;
 
 public class GuessTheNumberGame {
     //Inicia el juego y genera el número aleatorio.
     public static void main(String[] args) {
+        //atributos
         Random rand = new Random();
         int targetNumber = rand.nextInt(100);
         System.out.println(targetNumber); //ver número random
 
+        //Insertar objetos
+        HumanPlayer player = new HumanPlayer();
+        //ComputerPlayer computerPlayer = new ComputerPlayer();
+       // playerGuessRange(targetNumber, player.getNumber());
+        //playerGuessRange(targetNumber,computerPlayer.getNumber());
+        boolean win = false;
+
+
+        //Para terminar el juego
+        while (win == false) {
+            int playerGuess = player.makeGuess();
+
+            if (playerGuess == targetNumber) {
+                win = true;
+            } else if (playerGuess < targetNumber) {
+                System.out.println("To low!");
+            } else if (playerGuess > targetNumber) {
+                System.out.println("To high!");
+            }
+        }
+        System.out.println("You win!");
+        //System.out.println("Your guesses: ");
+
     }
-}
+
+
+    }
+
+    //comparación con checkGuess()
+
 
     /*
     //método checkNumber() para ejecutar turnos, guestGuess y el estado de la partida
