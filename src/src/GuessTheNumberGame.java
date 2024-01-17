@@ -1,4 +1,4 @@
-//import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GuessTheNumberGame {
@@ -14,73 +14,42 @@ public class GuessTheNumberGame {
         ComputerPlayer computerPlayer = new ComputerPlayer();
 
         boolean win = false;
+        ArrayList<Integer> playerNumbers = new ArrayList<>();
+        ArrayList<Integer> computerNumbersPlayed = new ArrayList<>();
 
 
-        //Bucle para turnos
+        //Bucle principal
         do {
             //HumanPlayer
             int playerGuess = player.makeGuess();
+            playerNumbers.add(playerGuess);
+            computerNumbersPlayed.add(playerGuess);
+            checkGuess(playerGuess, targetNumber, true, playerNumbers, computerNumbersPlayed);
 
-            if (playerGuess == targetNumber) {
-                win = true;
-                System.out.println("You win!");
-                break;
-            } else if (playerGuess < targetNumber) {
-                System.out.println("To low!");
-            } else if (playerGuess > targetNumber) {
-                System.out.println("To high!");
-            }
-
-        //Para ComputerPlayer
+            //ComputerPlayer
             int computerGuess = computerPlayer.makeGuess();
+            checkGuess(computerGuess, targetNumber, false, null, computerNumbersPlayed); //se cambió el segundo null en caso de que el ganador sea la computadora
+        } while (!win);
+    }
 
-            if (computerGuess == targetNumber) {
-                win = true;
-                System.out.println("Computer Player wins!");
-            } else if (computerGuess < targetNumber) {
-                System.out.println("To low!");
+    //Método checkGuess que revisa si el jugador que ganó fue human o no
+    private static void checkGuess(int guess, int targetNumber, boolean isHuman, ArrayList<Integer> guesses, ArrayList<Integer> numbersPlayed) {
+        if (guess == targetNumber) {
+            if (isHuman) {
+                System.out.println("You win!");
+                System.out.println("Your attempts: " + guesses.size());
+                System.out.println("Your guesses: " + numbersPlayed);
             } else {
-                System.out.println("To high!");
+                System.out.println("Computer Player wins!");
+                System.out.println("Attempts: " + guesses.size());
+                System.out.println("The guesses: " + numbersPlayed);
             }
-        }while (!win);
+            System.exit(0); // Se recomienda para finalizar el bucle principal.
+        } else if (guess < targetNumber) {
+            System.out.println("Too low!");
+        } else {
+            System.out.println("Too high!"); //cómo hacerlo más preciso?
+        }
     }
 }
 
-    //comparación con checkGuess()
-
-
-    /*
-    //método checkNumber() para ejecutar turnos, guestGuess y el estado de la partida
-    //tiene que ser booleano
-    public static boolean checkGuess() {
-
-        return ;
-    }
-
-    Scanner inputNumberHumanPlayer = new Scanner(System.in); //el scanner ya está presente en la clase Player. Solo hay que invocarlo.
-        int numberOfTries = 0; //coleccionarlos en un array
-
-            int guess;
-
-            boolean win = false;
-
-            while (win == false) {
-
-                System.out.println("Guess a number between 1 and 100: ");
-                guess = inputNumberHumanPlayer.nextInt();
-                numberOfTries++;
-
-                if (guess == targetNumber) {
-                    win = true;
-                } else if (guess < targetNumber) {
-                    System.out.println("To low!");
-                } else if (guess > targetNumber) {
-                    System.out.println("To high!");
-                }
-            }
-            System.out.println("You win!");
-            System.out.println("Your guesses: ");
-            System.out.println("Attempts: " + numberOfTries);
-        }
-    }
-*/
