@@ -9,7 +9,7 @@ public class HumanPlayer extends Player {
         //System.out.println("––– Round: " + getName() + "–––");
     }
 
-    // Método adicional para obtener el nombre
+    // Método para obtener el nombre
     public void enterName() {
         System.out.println("*** Welcome to Guess The number ***");
         System.out.println("Guess a number between 1 and 100 and try to win vs the Computer just for fuuuuun!:D");
@@ -20,10 +20,13 @@ public class HumanPlayer extends Player {
 
     // Implementación del método abstracto makeGuess
     @Override
-    public int makeGuess() {
+    public int makeGuess(Player player) {
+        Scanner scanGuess = new Scanner(System.in);
         System.out.println("––– Round: " + getName() + "–––");
         System.out.println(getName() + ", make your guess: ");
-        return scanner.nextInt();
+        int playerGuess = scanGuess.nextInt();
+        player.setGuesses(playerGuess);
+        return playerGuess;
     }
 
 
