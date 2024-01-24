@@ -41,9 +41,14 @@ public abstract class Player {
 
 }*/
 import java.util.Scanner;
+import java.util.ArrayList;
 public abstract class Player {
     String name;
-    int guesses;
+    ArrayList<Integer> guesses;
+
+    public Player(){
+        this.guesses = new ArrayList<>();
+    }
 
     public String getName() {
         return name;
@@ -51,11 +56,11 @@ public abstract class Player {
     public void setName(String name) {
         this.name = name;
     }
-    public int getGuesses() {
+    public ArrayList<Integer> getGuesses() {
         return guesses;
     }
-    public void setGuesses(int guesses) {
-        this.guesses = guesses;
+    public void setGuesses(int number) {
+        this.guesses.add(number);
     }
-    public abstract int makeGuess();
+    public abstract int makeGuess(Player player); //necesita estos 2 parámetros?
 }

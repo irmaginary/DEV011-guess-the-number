@@ -2,37 +2,41 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GuessTheNumberGame {
-    //Inicia el juego y genera el número aleatorio.
     public static void main(String[] args) {
-        //atributos
         Random rand = new Random();
         int targetNumber = rand.nextInt(100);
         System.out.println(targetNumber); //ver número random
 
-        //Insertar objetos de jugadores
-        HumanPlayer player = new HumanPlayer();
-        ComputerPlayer computerPlayer = new ComputerPlayer();
+        // Insertar objetos de jugadores
+        Player player = new HumanPlayer();
+        Player computerPlayer = new ComputerPlayer();
 
-        boolean win = false;
+        // Bucle principal
+        playGame(player, computerPlayer, targetNumber);
+    }
+
+    // Método principal refactorizado para facilitar las pruebas
+    public static void playGame(Player player, Player computerPlayer, int targetNumber) {
         ArrayList<Integer> playerNumbers = new ArrayList<>();
         ArrayList<Integer> computerNumbersPlayed = new ArrayList<>();
 
+        boolean win = false;
 
-        //Bucle principal
         do {
-            //HumanPlayer
-            int playerGuess = player.makeGuess();
+            // HumanPlayer
+            int playerGuess = player.makeGuess(computerPlayer);
             playerNumbers.add(playerGuess);
             computerNumbersPlayed.add(playerGuess);
             checkGuess(playerGuess, targetNumber, true, playerNumbers, computerNumbersPlayed);
 
-            //ComputerPlayer
-            int computerGuess = computerPlayer.makeGuess();
-            checkGuess(computerGuess, targetNumber, false, null, computerNumbersPlayed); //se cambió el segundo null en caso de que el ganador sea la computadora
+            // ComputerPlayer
+            int computerGuess = computerPlayer.makeGuess(player);
+            checkGuess(computerGuess, targetNumber, false, null, computerNumbersPlayed); // Segundo null si el ganador es la computadora
+
         } while (!win);
     }
 
-    //Método checkGuess que revisa si el jugador que ganó fue human o no
+    // Método checkGuess que revisa si el jugador que ganó fue human o no
     private static void checkGuess(int guess, int targetNumber, boolean isHuman, ArrayList<Integer> guesses, ArrayList<Integer> numbersPlayed) {
         if (guess == targetNumber) {
             if (isHuman) {
@@ -48,8 +52,11 @@ public class GuessTheNumberGame {
         } else if (guess < targetNumber) {
             System.out.println("Too low!");
         } else {
-            System.out.println("Too high!"); //cómo hacerlo más preciso?
+            System.out.println("Too high!");
         }
     }
 }
+
+
+
 
