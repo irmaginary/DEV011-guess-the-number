@@ -37,7 +37,7 @@ public class GuessTheNumberGame {
     }
 
     // Método checkGuess que revisa si el jugador que ganó fue human o no
-    private static void checkGuess(int guess, int targetNumber, boolean isHuman, ArrayList<Integer> guesses, ArrayList<Integer> numbersPlayed) {
+    protected static void checkGuess(int guess, int targetNumber, boolean isHuman, ArrayList<Integer> guesses, ArrayList<Integer> numbersPlayed) {
         if (guess == targetNumber) {
             if (isHuman) {
                 System.out.println("You win!");
